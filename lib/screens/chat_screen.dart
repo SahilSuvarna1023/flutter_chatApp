@@ -1,4 +1,5 @@
 import 'package:chatApp2/widgets/chat/messages.dart';
+import 'package:chatApp2/widgets/chat/new_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -36,19 +37,15 @@ class ChatScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        child: Column(children: [
-          Expanded(
-            child: Messages(),
-          ),
-        ]),
+        child: Column(
+          children: [
+            Expanded(
+              child: Messages(),
+            ),
+            NewMessage(),
+          ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            Firestore.instance
-                .collection('chats/9h7ZmVW2Ar2Szhm4Ri20/messages')
-                .add({'text': 'This is another entry!..'});
-          }),
     );
   }
 }
